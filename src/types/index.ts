@@ -1,4 +1,5 @@
-import { object, string, number, boolean, Output, array } from "valibot";
+import { object, string, number, boolean, array } from "valibot";
+import type { Infer } from "valibot";
 
 export const DraftProductSchema = object({
     name: string(),
@@ -9,7 +10,9 @@ export const ProductSchema = object ({
     id: number(),
     name: string(),
     price: number(),
-    aviability : boolean()
+    aviability: boolean()
 })
-export const ProductsSchema = array(ProductSchema)
-export type Product = Output<typeof ProductSchema>
+
+export const ProductsSchema = array(ProductSchema);
+
+export type Product = Infer<typeof ProductSchema>;
